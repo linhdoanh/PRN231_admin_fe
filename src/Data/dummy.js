@@ -3,13 +3,14 @@ import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutline
 import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
 import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
-import { IoMdContacts } from 'react-icons/io';
+import { IoMdContacts, IoMdBook, IoMdGitNetwork, IoMdCube } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
+import { RiBook2Fill, RiContactsBook2Fill, RiGroupLine} from 'react-icons/ri'
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -22,6 +23,8 @@ import product5 from './product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 import product8 from './product8.jpg';
+import { Link } from 'react-router-dom';
+import { Stacked, Pie, Button, LineChart, SparkLine } from '../Components';
 
 export const gridOrderImage = (props) => (
   <div>
@@ -31,6 +34,18 @@ export const gridOrderImage = (props) => (
       alt="order-item"
     />
   </div>
+);
+
+export const gridOrderButton = (props) => (
+  <Link to="/">
+    <button
+      type="button"
+      style={{ background: props.ButtonBg1 }}
+      className="text-white py-1 px-2 capitalize rounded-2xl text-md"
+    >
+      {props.Button1}
+    </button>
+  </Link>
 );
 
 export const gridOrderStatus = (props) => (
@@ -430,10 +445,25 @@ export const customersGrid = [
     textAlign: 'Center',
     isPrimaryKey: true,
   },
-
+  { field: 'button', 
+    width: '120',
+    headerText: 'Action',
+    template: gridOrderButton,
+    textAlign: 'Center',
+  },
+  // { type: 'button', 
+  //   width: '120',
+  //   height: '120',
+  //   border: '1px solid black',
+  //   headerText: 'Action',
+  //   // template: gridOrderButton,
+  //   textAlign: 'Center',
+  // },
+  
 ];
 
 export const employeesGrid = [
+  { type: 'checkbox', width: '50' },
   { headerText: 'Employee',
     width: '150',
     template: gridEmployeeProfile,
@@ -488,74 +518,90 @@ export const links = [
         icon: <AiOutlineShoppingCart />,
       },
       {
-        name: 'employees',
-        icon: <IoMdContacts />,
-      },
-      {
         name: 'customers',
         icon: <RiContactsLine />,
       },
+      {
+        name: 'publishers',
+        icon: <RiContactsLine />,
+      },
+      {
+        name: 'accounts',
+        icon: <RiGroupLine />,
+      },
+      {
+        name: 'books',
+        icon: <IoMdBook />,
+      },
+      {
+        name: 'ebooks',
+        icon: <IoMdGitNetwork />,
+      },
+      {
+        name: 'categories',
+        icon: <FiShoppingBag />,
+      },
     ],
   },
-  {
-    title: 'Apps',
-    links: [
-      {
-        name: 'calendar',
-        icon: <AiOutlineCalendar />,
-      },
-      {
-        name: 'kanban',
-        icon: <BsKanban />,
-      },
-      {
-        name: 'editor',
-        icon: <FiEdit />,
-      },
-      {
-        name: 'color-picker',
-        icon: <BiColorFill />,
-      },
-    ],
-  },
-  {
-    title: 'Charts',
-    links: [
-      {
-        name: 'line',
-        icon: <AiOutlineStock />,
-      },
-      {
-        name: 'area',
-        icon: <AiOutlineAreaChart />,
-      },
+  // {
+  //   title: 'Apps',
+  //   links: [
+  //     {
+  //       name: 'calendar',
+  //       icon: <AiOutlineCalendar />,
+  //     },
+  //     {
+  //       name: 'kanban',
+  //       icon: <BsKanban />,
+  //     },
+  //     {
+  //       name: 'editor',
+  //       icon: <FiEdit />,
+  //     },
+  //     {
+  //       name: 'color-picker',
+  //       icon: <BiColorFill />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'Charts',
+  //   links: [
+  //     {
+  //       name: 'line',
+  //       icon: <AiOutlineStock />,
+  //     },
+  //     {
+  //       name: 'area',
+  //       icon: <AiOutlineAreaChart />,
+  //     },
 
-      {
-        name: 'bar',
-        icon: <AiOutlineBarChart />,
-      },
-      {
-        name: 'pie',
-        icon: <FiPieChart />,
-      },
-      {
-        name: 'financial',
-        icon: <RiStockLine />,
-      },
-      {
-        name: 'color-mapping',
-        icon: <BsBarChart />,
-      },
-      {
-        name: 'pyramid',
-        icon: <GiLouvrePyramid />,
-      },
-      {
-        name: 'stacked',
-        icon: <AiOutlineBarChart />,
-      },
-    ],
-  },
+  //     {
+  //       name: 'bar',
+  //       icon: <AiOutlineBarChart />,
+  //     },
+  //     {
+  //       name: 'pie',
+  //       icon: <FiPieChart />,
+  //     },
+  //     {
+  //       name: 'financial',
+  //       icon: <RiStockLine />,
+  //     },
+  //     {
+  //       name: 'color-mapping',
+  //       icon: <BsBarChart />,
+  //     },
+  //     {
+  //       name: 'pyramid',
+  //       icon: <GiLouvrePyramid />,
+  //     },
+  //     {
+  //       name: 'stacked',
+  //       icon: <AiOutlineBarChart />,
+  //     },
+  //   ],
+  // },
 ];
 
 export const cartData = [
@@ -932,6 +978,10 @@ export const customersData = [
     Weeks: '40',
     Budget: '$2.4k',
     Location: 'India',
+    ButtonBg1: '#03C9D7',
+    Button1: 'Edit',
+    ButtonBg2: '#4ADE80',
+    Button2: 'Detail'
   },
   {
     CustomerID: 1002,
